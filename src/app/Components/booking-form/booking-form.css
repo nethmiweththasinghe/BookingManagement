@@ -1,0 +1,74 @@
+@reference "tailwindcss";
+
+.booking {
+  @apply rounded-xl border border-gray-200 bg-white p-6 shadow-sm;
+}
+
+h2 {
+  @apply mb-4 text-xl font-bold text-gray-900;
+}
+
+form {
+  @apply flex flex-col gap-3;
+}
+
+label {
+  @apply flex flex-col gap-1 text-sm font-medium text-gray-700;
+}
+
+input {
+  @apply rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30;
+}
+
+button {
+  @apply mt-2 cursor-pointer rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300;
+}
+
+/* Selected room box */
+.selected-room {
+  @apply mb-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3;
+}
+
+.selected-label {
+  @apply text-xs font-semibold uppercase tracking-wider text-blue-600;
+}
+
+.selected-name {
+  @apply text-lg font-bold text-gray-900;
+}
+
+.selected-meta {
+  @apply text-sm text-gray-600;
+}
+
+.no-room {
+  @apply mb-4 rounded-lg border border-dashed border-gray-300 px-4 py-3 text-sm text-gray-500;
+}
+
+.hint {
+  @apply font-normal text-gray-500;
+}
+
+.error {
+  @apply -mt-1 text-xs text-red-600;
+}
+
+.success {
+  @apply mb-3 rounded-md bg-green-50 px-3 py-2 text-sm text-green-700;
+}
+
+tbody tr {
+  @apply cursor-pointer transition-colors hover:bg-blue-50/50;
+}
+
+tbody tr.selected {
+  @apply bg-blue-50 hover:bg-blue-50;
+}
+
+tbody tr.selected td.room-name {
+  @apply text-blue-700 font-semibold;
+}
+
+tbody tr.disabled {
+  @apply cursor-not-allowed opacity-60 hover:bg-transparent;
+}

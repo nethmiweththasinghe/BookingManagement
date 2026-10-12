@@ -1,0 +1,95 @@
+/* Lets this file use Tailwind classes with @apply */
+@reference "tailwindcss";
+
+.rooms {
+  @apply w-full;
+}
+
+/* ---------- Heading ---------- */
+.rooms-header {
+  @apply mb-6;
+}
+
+.rooms-header h1 {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.room-count {
+  @apply mt-1 text-sm text-gray-500;
+}
+
+/* ---------- Table card ---------- */
+.table-card {
+  @apply overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm;
+}
+
+table {
+  @apply min-w-full divide-y divide-gray-200 text-left text-sm;
+}
+
+thead {
+  @apply bg-gray-50;
+}
+
+th {
+  @apply px-6 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500;
+}
+
+tbody {
+  @apply divide-y divide-gray-100;
+}
+
+tbody tr {
+  @apply cursor-pointer transition-colors hover:bg-blue-50/50;
+}
+
+/* The room currently in the form */
+tbody tr.selected {
+  @apply bg-blue-50 hover:bg-blue-50;
+}
+
+tbody tr.selected td.room-name {
+  @apply text-blue-700;
+}
+
+/* Rooms that can't be booked */
+tbody tr.disabled {
+  @apply cursor-not-allowed opacity-60 hover:bg-transparent;
+}
+
+td {
+  @apply whitespace-nowrap px-6 py-4 text-gray-600;
+}
+
+td.room-name {
+  @apply font-medium text-gray-900;
+}
+
+td.empty {
+  @apply py-10 text-center text-gray-500;
+}
+
+/* ---------- Availability pill ---------- */
+.status {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1;
+}
+
+.dot {
+  @apply h-1.5 w-1.5 rounded-full;
+}
+
+.status.available {
+  @apply bg-green-50 text-green-700 ring-green-600/20;
+}
+
+.status.available .dot {
+  @apply bg-green-500;
+}
+
+.status.unavailable {
+  @apply bg-red-50 text-red-700 ring-red-600/20;
+}
+
+.status.unavailable .dot {
+  @apply bg-red-500;
+}

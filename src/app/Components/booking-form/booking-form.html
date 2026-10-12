@@ -1,0 +1,70 @@
+<section class="booking">
+  <h2>Book this room</h2>
+
+  <!-- The selected room -->
+  @if (room(); as selected) {
+    <div class="selected-room">
+      <p class="selected-label">Room</p>
+      <p class="selected-name">{{ selected.name }}</p>
+      <p class="selected-meta">
+        {{ selected.roomLocation }} · up to {{ selected.capacity }} people
+      </p>
+    </div>
+  } @else {
+    <p class="no-room">Select a room from the list to book it.</p>
+  }
+
+  @if (confirmation()) {
+    <p class="success">{{ confirmation() }}</p>
+  }
+  @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  }
+
+  <form [formRoot]="bookingForm">
+    <label>
+      Meeting title (optional)
+      <input type="text" [formField]="bookingForm.title" />
+    </label>
+    @if (bookingForm.title().touched() && bookingForm.title().invalid()) {
+      <p class="error">{{ bookingForm.title().errors()[0].message }}</p>
+    }
+
+    <label>
+      Date
+      <input type="date" [formField]="bookingForm.bookingDate" />
+    </label>
+    @if (bookingForm.bookingDate().touched() && bookingForm.bookingDate().invalid()) {
+      <p class="error">{{ bookingForm.bookingDate().errors()[0].message }}</p>
+    }
+
+    <label>
+      Start time
+      <input type="time" [formField]="bookingForm.bookingTime" />
+    </label>
+    @if (bookingForm.bookingTime().touched() && bookingForm.bookingTime().invalid()) {
+      <p class="error">{{ bookingForm.bookingTime().errors()[0].message }}</p>
+    }
+
+    <label>
+      Meeting hours
+      <input type="number" [formField]="bookingForm.meetingHours" />
+    </label>
+    @if (bookingForm.meetingHours().touched() && bookingForm.meetingHours().invalid()) {
+      <p class="error">{{ bookingForm.meetingHours().errors()[0].message }}</p>
+    }
+
+    <label>
+      Number of attendees
+      @if (room(); as selected) {
+        <span class="hint">(max {{ selected.capacity }})</span>
+      }
+      <input type="number" [formField]="bookingForm.noAttendees" />
+    </label>
+    @if (bookingForm.noAttendees().touched() && bookingForm.noAttendees().invalid()) {
+      <p class="error">{{ bookingForm.noAttendees().errors()[0].message }}</p>
+    }
+
+    <button type="submit" [disabled]="!room()">Book room</button>
+  </form>
+</section>

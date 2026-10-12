@@ -1,0 +1,45 @@
+<section class="rooms">
+  <div class="header">
+    <h1>Meeting Rooms</h1>
+    <p class="room-count">{{ activeRoomCount() }} of {{ rooms().length }} rooms available</p>
+  </div>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Room Name</th>
+          <th>Room Location</th>
+          <th>Capacity</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (room of rooms(); track room.id) {
+          <tr
+            (click)="selectRoom(room)"
+            [class.selected]="room.id"
+            [class.disabled]="!room.isActive"
+          >
+            <td class="room-name">{{ room.name }}</td>
+            <td>{{ room.roomLocation }}</td>
+            <td>{{ room.capacity }}</td>
+            <td>
+              <span
+                class="status"
+                [class.available]="room.isActive"
+                [class.unavailable]="!room.isActive"
+              >
+                <span class="dot"></span>
+                {{ room.isActive ? 'Available' : 'Temporary Not Available' }}
+              </span>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="empty">No rooms found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

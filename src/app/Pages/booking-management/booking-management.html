@@ -1,0 +1,9 @@
+<div class="page">
+  <div>
+    <app-room-details 
+    (roomSelected)="selectedRoom.set($event)"/>
+  </div>
+  <div>
+    <app-booking-form [room]="selectedRoom()"/>
+  </div>
+</div>
